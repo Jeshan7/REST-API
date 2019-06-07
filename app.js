@@ -1,8 +1,11 @@
 const express = require('express')
       routes = require("./routes/api"),
-      bodyParser = require('body-parser');
+      bodyParser = require('body-parser'),
+      mongoose = require("mongoose");
 
 var app = express();
+mongoose.connect("mongodb://localhost/driver");
+mongoose.Promise = global.Promise;
 
 app.use(bodyParser.json());
 app.use('/api', routes);
